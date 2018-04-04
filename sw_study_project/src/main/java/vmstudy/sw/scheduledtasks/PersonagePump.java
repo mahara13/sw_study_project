@@ -78,8 +78,7 @@ public class PersonagePump {
 	}
 
 	private boolean isTheSameAsCurrentDay(Date updatedAt) {
-		return false;
-		//return DateUtils.isToday(updatedAt);
+		return DateUtils.isToday(updatedAt);
 	}
 	
 	@Value("${sw.start_api_url}")
