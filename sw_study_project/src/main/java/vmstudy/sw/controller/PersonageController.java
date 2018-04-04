@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import vmstudy.sw.models.Personage;
-import vmstudy.sw.models.PersonageCall;
+import vmstudy.sw.db.models.Personage;
+import vmstudy.sw.db.models.PersonageCall;
 import vmstudy.sw.repository.PersonageCallRepository;
 import vmstudy.sw.repository.PersonageRepository;
 import vmstudy.sw.services.PersonageService;
@@ -43,12 +43,12 @@ public class PersonageController {
 	    return personageRepository.save(personage);
 	}
 	
-	@RequestMapping(value="/find/persoge", method = RequestMethod.GET)
+	@RequestMapping(value="/find/personage", method = RequestMethod.GET)
 	public List<String> searchPersonages(@RequestParam("s") String s){
 		return personageService.searchByWordStarting(s);
 	}
 	
-	@RequestMapping(value="/persogeCallStatistic", method = RequestMethod.GET)
+	@RequestMapping(value="/personageCallStatistic", method = RequestMethod.GET)
 	public List<String> getPersogeCallStatistic(){
 		List<PersonageCall> findAll = personageCallRepository.findAll();
 		List<String> statistic = findAll.stream().map(pc -> (pc.isFinished() ? "Finished at" : " Processed at ") + pc.getUpdatedAt() +

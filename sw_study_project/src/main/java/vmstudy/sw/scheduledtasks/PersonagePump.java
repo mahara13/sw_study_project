@@ -4,11 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import vmstudy.sw.models.Personage;
-import vmstudy.sw.models.PersonageCall;
+import vmstudy.sw.db.models.Personage;
+import vmstudy.sw.db.models.PersonageCall;
 import vmstudy.sw.personageshipping.PersonageShipping;
 import vmstudy.sw.services.PersonageCallService;
 import vmstudy.sw.services.PersonageService;
@@ -17,7 +18,7 @@ import vmstudy.sw.utils.DateUtils;
 @Component
 public class PersonagePump {
 	
-	private static String START_API_URL = "https://swapi.co/api/people/";
+	private static String START_API_URL;
 
 	@Autowired
 	private PersonageShipping personageGet;
@@ -41,7 +42,7 @@ public class PersonagePump {
 			
 			personageCallService.savePersonageCall(processingLastCall);
 			sleep(1000);//To make interval at least 2 seconds
-			personageService.savePersonages(personages, processingLastCall);	
+			personageService.savePersonages(personages);	
 			sleep(1000);//To make interval at least 2 seconds
 			personageService.cleanOldPersonages(processingLastCall);
 			personageCallService.savePersonageCall(processingLastCall);//To make interval in which personages are valid
@@ -77,6 +78,12 @@ public class PersonagePump {
 	}
 
 	private boolean isTheSameAsCurrentDay(Date updatedAt) {
-		return DateUtils.isToday(updatedAt);
+		return false;
+		//return DateUtils.isToday(updatedAt);
 	}
+	
+	@Value("${sw.start_api_url}")
+    public void setSvnUrl(String start_api_url) {
+		START_API_URL = start_api_url;
+    }
 }

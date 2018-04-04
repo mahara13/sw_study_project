@@ -7,8 +7,8 @@ import java.util.Random;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import vmstudy.sw.models.Personage;
-import vmstudy.sw.models.PersonageCall;
+import vmstudy.sw.db.models.Personage;
+import vmstudy.sw.db.models.PersonageCall;
 
 @Component
 @Profile("dev")

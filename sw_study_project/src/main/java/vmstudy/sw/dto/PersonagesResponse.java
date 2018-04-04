@@ -1,6 +1,8 @@
-package vmstudy.sw.models;
+package vmstudy.sw.dto;
 
 import java.util.List;
+
+import vmstudy.sw.db.models.Personage;
 
 public class PersonagesResponse {
 

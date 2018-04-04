@@ -19,8 +19,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import vmstudy.sw.models.Personage;
-import vmstudy.sw.models.PersonageCall;
+import vmstudy.sw.db.models.Personage;
+import vmstudy.sw.db.models.PersonageCall;
 import vmstudy.sw.repository.PersonageCallRepository;
 import vmstudy.sw.repository.PersonageRepository;
 

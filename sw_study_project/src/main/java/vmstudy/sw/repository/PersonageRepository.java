@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import vmstudy.sw.models.Personage;
+import vmstudy.sw.db.models.Personage;
 
 @Repository
 public interface PersonageRepository extends JpaRepository<Personage, Long> {
@@ -17,5 +17,6 @@ public interface PersonageRepository extends JpaRepository<Personage, Long> {
     @Transactional
     public void deleteByCreatedAtBefore(Date expiryDate);
 	
+	@Transactional(readOnly = true)
 	public List<Personage> findAllByCreatedAtBetweenAndNameContains(Date startDate, Date endDate, String searchWord);
 }

@@ -3,7 +3,7 @@ package vmstudy.sw.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import vmstudy.sw.models.PersonageCall;
+import vmstudy.sw.db.models.PersonageCall;
 
 @Repository
 public interface PersonageCallRepository extends JpaRepository<PersonageCall, Long>{
